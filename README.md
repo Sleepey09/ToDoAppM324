@@ -1,3 +1,6 @@
+# planning 
+The planning for this little TO-DO Web-application is done in [`YouTrack`](https://modul324.youtrack.cloud/dashboard?id=170-1)(only accessable with the right permission)
+
 # sv
 
 Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
