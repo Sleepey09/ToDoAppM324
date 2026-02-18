@@ -1,3 +1,15 @@
-<h1>Welcome to TODO (it's in the name)</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
-<p>I Am a second line</p>
+<script lang="ts">
+	let todos = $state([
+		{ text: 'Todo 1', done: false },
+		{ text: 'Todo 2', done: false },
+	]);
+</script>
+
+<div class="todos">
+	{#each todos as todo}
+		<div class="todo">
+			<input value={todo.text} type="text" />
+			<input value={todo.done} type="checkbox" />
+		</div>
+	{/each}
+</div>
