@@ -1,29 +1,24 @@
 <script lang="ts">
-	type Todo = {
-		text: string
-		done: boolean
-	}
+  import type { Todo } from '$lib/todo';
+  import { addTodo as add, deleteChecked as del } from '$lib/todo';
 
-	let todos: Todo[] = [
-		{ text: 'Todo 1', done: false },
-		{ text: 'Todo 2', done: false },
-	]
+  let todos: Todo[] = [
+    { text: 'Todo 1', done: false },
+    { text: 'Todo 2', done: false },
+  ];
 
-	function addTodo(event: KeyboardEvent) {
-		if (event.key !== 'Enter') return
+  function addTodo(event: KeyboardEvent) {
+    if (event.key !== 'Enter') return;
+    const input = event.target as HTMLInputElement;
+    todos = add(todos, input.value);
+    input.value = '';
+  }
 
-		const input = event.target as HTMLInputElement
-		const text = input.value.trim()
-		if (!text) return
-
-		todos = [...todos, { text, done: false }]
-		input.value = ''
-	}
-
-	function deleteChecked() {
-		todos = todos.filter(todo => !todo.done)
-	}
+  function deleteChecked() {
+    todos = del(todos);
+  }
 </script>
+
 <div class="app">
 	<h1 class="title">Do-Too!</h1>
 
