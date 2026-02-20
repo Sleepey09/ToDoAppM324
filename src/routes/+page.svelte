@@ -24,20 +24,24 @@
 		todos = todos.filter(todo => !todo.done)
 	}
 </script>
+<div class="app">
+	<h1 class="title">Do-Too!</h1>
 
-<h1>Do-Too!</h1>
+	<div class="options">
+		<button class="delete-btn" on:click={deleteChecked}>
+			delete checked
+		</button>
+	</div>
 
-<div class="options">
-	<button on:click={deleteChecked}>delete checked</button>
+	<input class="add-input" on:keydown={addTodo} placeholder="Add todo" />
+
+	<div class="todos">
+		{#each todos as todo}
+			<div class="todo" class:done={todo.done}>
+				<input class="text" bind:value={todo.text} type="text" />
+				<input bind:checked={todo.done} type="checkbox" />
+			</div>
+		{/each}
+	</div>
 </div>
 
-<input on:keydown={addTodo} placeholder="Add todo" type="text" />
-
-<div class="todos">
-	{#each todos as todo}
-		<div class="todo">
-			<input bind:value={todo.text} type="text" />
-			<input bind:checked={todo.done} type="checkbox" />
-		</div>
-	{/each}
-</div>

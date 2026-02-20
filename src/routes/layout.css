@@ -1,1 +1,66 @@
 @import 'tailwindcss';
+
+/* ---------- TITLE ---------- */
+.title {
+	text-align: center;
+	font-size: 2rem;
+	font-weight: 700;
+	margin-bottom: 1rem;
+	color: #111827; /* slate-900 */
+}
+
+/* ---------- BUTTON ---------- */
+.options {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 1rem;
+}
+
+.delete-btn {
+	padding: 0.5rem 1rem;
+	border-radius: 999px;
+	border: none;
+	background: #ef4444; /* red-500 */
+	color: white;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.delete-btn:hover {
+	background: #dc2626; /* red-600 */
+}
+
+.delete-btn:active {
+	transform: scale(0.97);
+}
+
+/* ---------- INPUT ---------- */
+.add-input {
+	width: 100%;
+	padding: 0.6rem 0.75rem;
+	margin-bottom: 1rem;
+	border-radius: 8px;
+	border: 1px solid #e5e7eb;
+	font-size: 0.95rem;
+}
+.app {
+	max-width: 420px;
+	margin: 2rem auto;
+	padding: 1.5rem;
+	background: white;
+	border-radius: 12px;
+	box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.todo {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.75rem;
+}
+
+.todo.done input[type="text"] {
+	text-decoration: line-through;
+	opacity: 0.5;
+}
