@@ -1,28 +1,43 @@
 <script lang="ts">
-	let todos = $state([
+	type Todo = {
+		text: string
+		done: boolean
+	}
+
+	let todos: Todo[] = [
 		{ text: 'Todo 1', done: false },
 		{ text: 'Todo 2', done: false },
-	]);
-function addTodo(event: KeyboardEvent) {
+	]
+
+	function addTodo(event: KeyboardEvent) {
 		if (event.key !== 'Enter') return
 
-		const todoEl = event.target as HTMLInputElement
-		const text = todoEl.value
-		const done = false
+		const input = event.target as HTMLInputElement
+		const text = input.value.trim()
+		if (!text) return
 
-		todos = [...todos, { text, done }]
+		todos = [...todos, { text, done: false }]
+		input.value = ''
+	}
 
-		todoEl.value = ''
+	function deleteChecked() {
+		todos = todos.filter(todo => !todo.done)
 	}
 </script>
+
 <h1>Do-Too!</h1>
-<input onkeydown={addTodo} placeholder="Add todo" type="text" />
+
+<div class="options">
+	<button on:click={deleteChecked}>delete checked</button>
+</div>
+
+<input on:keydown={addTodo} placeholder="Add todo" type="text" />
 
 <div class="todos">
 	{#each todos as todo}
 		<div class="todo">
-			<input value={todo.text} type="text" />
-			<input value={todo.done} type="checkbox" />
+			<input bind:value={todo.text} type="text" />
+			<input bind:checked={todo.done} type="checkbox" />
 		</div>
 	{/each}
 </div>
