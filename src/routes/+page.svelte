@@ -20,7 +20,7 @@
 </script>
 
 <div class="app">
-	<h1 class="title">Do-Too!</h1>
+	<h1 class="title">Do-Too Two!</h1>
 
 	<div class="options">
 		<button class="delete-btn" on:click={deleteChecked}>
