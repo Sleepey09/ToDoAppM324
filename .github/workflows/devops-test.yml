@@ -1,4 +1,4 @@
-name: DevOps Build
+name: DevOps Test
 
 on:
   push:
